@@ -17,7 +17,7 @@ const selectionSort = (arr) =>{
             if (arr[lowest] > arr[j])
             lowest = j
         }
-        // at last, we don't need everytime swap the sorted portion. so we only swap the arr when lowest is not equal to its index, (In other word, swap only when lowest ever re-assigned from the second loop)
+        // at last, we not necessary need swap the position everytime, we only swap the arr when lowest is not equal to its index, (In other word, swap only when lowest ever re-assigned from the second loop)
         if (i !== lowest) swap(arr, i, lowest)
     }
 

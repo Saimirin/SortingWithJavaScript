@@ -23,4 +23,4 @@ const test_insertionSort = insertionSort ([1,12,23,5,46,17,8,39,50])
 console.log (test_insertionSort)
 
 // Time Complexity : worst case O(n^2)  
-// Insertion sort is good for the array is almost sorted. e.g. [1,13,24,35,46,2]
+// Insertion sort is good for the array is almost sorted. e.g. [1,13,24,35,46,2] 

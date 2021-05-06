@@ -15,31 +15,45 @@ const swap = (arr, idx1, idx2) => {
 } 
 
 // Pivot function
-const pivot = (arr, left, right) => {
-    left = 0
-    right = arr.length+1
+const pivot = (arr, start=0, end=arr.length-1) => {
 
-    
     // pick the pivot value from the beginning of the array
-    let swapIdx = left
-    let pivot = arr[swapIdx]
+    let swapIdx = start
+    let pivot = arr[start]
 
-    for (let i= left+1; i < arr.length; i++) {
+    for (let i= start+1; i <= end; i++) {
         if (pivot > arr[i]) {
             swapIdx ++
             swap(arr, swapIdx, i)           
         }      
     }
-    swap(arr, left, swapIdx)
-    console.log('finished one round', arr) 
+    swap(arr, start, swapIdx)
     return swapIdx
+}
+
+// ------- QuickSort function ------
+// Call the pivot helper on the array
+// When the helper returns to you the updated pivot index, recursively call the pivot helper on the subarray to the left of that index,
+// and the subarray to the right of that index
+// Your base case occurs when you consider a subarray with less than 2 elements
+
+const quickSort = (arr, left = 0, right = arr.length-1) => {
+
+    if (left < right) {
+        let pivotIndex = pivot(arr, left, right)
+        // left
+        quickSort(arr, left, pivotIndex-1)
+        // right
+        quickSort(arr, pivotIndex+1, right)
+    }
+    
+    return arr
 }
 
 
 
-// const arrayForSwap = [1,2,3,4,5]
-// swap(arrayForSwap, 1,3)
-// console.log (arrayForSwap) 
-
 const test_pivot = pivot([26,23,27,44,17,47,39,42,43,1])
 console.log (test_pivot)
+
+const test_quickSort = quickSort([26,23,27,44,17,47,39,42,43,1])
+console.log (test_quickSort)
